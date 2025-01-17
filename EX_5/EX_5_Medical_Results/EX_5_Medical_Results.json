@@ -1,0 +1,33 @@
+{
+    "description": "Medical test results",
+    "data": [
+        {
+            "patient_name": "John Doe",
+            "timestamp": "2025-01-16T08:30:00Z",
+            "test_type": "Blood Glucose",
+            "result": {
+                "value": 90,
+                "unit": "mg/dL",
+                "reference_range": {
+                    "min": 70,
+                    "max": 99
+                },
+                "status": "ok"
+            }
+        },
+        {
+            "patient_name": "Jane Smith",
+            "timestamp": "2025-01-16T09:00:00Z",
+            "test_type": "Cholesterol",
+            "result": {
+                "value": 250,
+                "unit": "mg/dL",
+                "reference_range": {
+                    "min": 125,
+                    "max": 200
+                },
+                "status": "high"
+            }
+        }
+    ]
+}
