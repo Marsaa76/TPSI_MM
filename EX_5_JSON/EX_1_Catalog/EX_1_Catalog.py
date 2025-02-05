@@ -3,9 +3,9 @@ import jsonschema
 from jsonschema import validate, ValidationError
 
 # Percorsi dei file
-DATA_FILE = "catalogo_libri.json"
-SCHEMA_FILE = "schema_catalogo_libri.json"
-OUTPUT_FILE = "catalogo_libri_valid.json"
+DATA_FILE = "EX_1_Catalog.json"
+SCHEMA_FILE = "EX_1_Catalog_schema.json"
+OUTPUT_FILE = "EX_1_Catalog_output.json"
 
 def load_json(file_path):
     """Carica e restituisce il contenuto di un file JSON."""
