@@ -1,19 +1,17 @@
 {
-    "description": "Package tracking data",
-    "data": [
-        {
-            "location": {
-                "city": "New York",
-                "country": "USA"
-            },
-            "timestamp": "2025-01-16T10:00:00Z"
-        },
-        {
-            "location": {
-                "city": "London",
-                "country": "UK"
-            },
-            "timestamp": "2025-01-17T12:30:00Z"
-        }
+    "spedizione": [
+      {
+        "luogo": "Milano, Italia",
+        "data_ora": "2024-02-05T10:30:00"
+      },
+      {
+        "luogo": "Roma, Italia",
+        "data_ora": "2024-02-06T14:45:00"
+      },
+      {
+        "luogo": "Napoli, Italia",
+        "data_ora": "2024/02/07 16:00" 
+      }
     ]
-}
+  }
+  

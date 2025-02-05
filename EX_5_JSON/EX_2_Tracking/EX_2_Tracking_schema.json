@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+      "spedizione": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "luogo": {"type": "string"},
+            "data_ora": {"type": "string", "format": "date-time"}
+          },
+          "required": ["luogo", "data_ora"]
+        }
+      }
+    },
+    "required": ["spedizione"]
+  }
+  
