@@ -1,4 +1,5 @@
 import json
+import os
 import jsonschema
 from jsonschema import validate, ValidationError
 
@@ -21,10 +22,13 @@ def validate_rilevazioni(data, schema):
     return validi, non_validi
 
 def main():
-    dati = load_json("EX_4_Weather.json")
-    schema = load_json("EX_4_Weather_schema.json")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    json_file_path = os.path.join(script_dir, "EX_4_Weather.json")
+    schema_file_path = os.path.join(script_dir, "EX_4_Weather_schema.json")
+    output_file_path = os.path.join(script_dir, "EX_4_Weather_output.json")
     
-    validi, non_validi = validate_rilevazioni(dati, schema)
+    validi, non_validi = validate_rilevazioni(json_file_path, schema_file_path)
     
     print("\nRilevazioni valide:")
     for r in validi:
@@ -35,9 +39,12 @@ def main():
         print(f" - Data/ora: {r.get('data_ora', 'Mancante')}")
     
     output_data = {"rilevazioni": validi}
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open( output_file_path , "w", encoding="utf-8") as f:
         json.dump(output_data, f, indent=4, ensure_ascii=False)
-    print(f"\nRecord validi salvati in '{EX_4_Weather_output.json}'.")
+    print(f"\nRecord validi salvati in '{output_file_path}'.")
+
+
+    
 
 if __name__ == "__main__":
     main()
