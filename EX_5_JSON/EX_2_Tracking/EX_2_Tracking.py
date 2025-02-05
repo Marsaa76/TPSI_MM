@@ -1,14 +1,7 @@
 import json
+import os
 import jsonschema
 from jsonschema import validate, ValidationError
-
-DATA_FILE = "EX_2_Tracking.json"
-SCHEMA_FILE = "EX_2_Tracking_schema.json"
-OUTPUT_FILE = "EX_2_Tracking_output.json"
-
-def load_json(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        return json.load(f)
 
 def validate_pacchi(data, schema):
     validi = []
@@ -25,10 +18,13 @@ def validate_pacchi(data, schema):
     return validi, non_validi
 
 def main():
-    dati = load_json(DATA_FILE)
-    schema = load_json(SCHEMA_FILE)
-    
-    validi, non_validi = validate_pacchi(dati, schema)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    json_file_path = os.path.join(script_dir, "EX_2_Tracking.json")
+    schema_file_path = os.path.join(script_dir, "EX_2_Tracking_schema.json")
+    output_file_path = os.path.join(script_dir, "EX_2_Tracking_output.json")
+
+    validi, non_validi = validate_pacchi(json_file_path, schema_file_path)
     
     print("\nTappe valide:")
     for tappa in validi:
@@ -39,9 +35,9 @@ def main():
         print(f" - Luogo: {tappa.get('luogo', 'Mancante')}")
     
     output_data = {"spedizione": validi}
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open(output_file_path, "w", encoding="utf-8") as f:
         json.dump(output_data, f, indent=4, ensure_ascii=False)
-    print(f"\nRecord validi salvati in '{OUTPUT_FILE}'.")
+    print(f"\nRecord validi salvati in '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()

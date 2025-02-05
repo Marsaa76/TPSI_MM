@@ -1,4 +1,5 @@
 import json
+import os
 import jsonschema
 from jsonschema import validate, ValidationError
 
@@ -28,11 +29,14 @@ def validate_libri(data, schema):
     return libri_validi, libri_non_validi
 
 def main():
-    dati = load_json(DATA_FILE)
-    schema = load_json(SCHEMA_FILE)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    json_file_path = os.path.join(script_dir, "EX_1_Catalog.json")
+    schema_file_path = os.path.join(script_dir, "EX_1_Catalog_schema.json")
+    output_file_path = os.path.join(script_dir, "EX_1_Catalog_output.json")
     
     # Valida i libri
-    libri_validi, libri_non_validi = validate_libri(dati, schema)
+    libri_validi, libri_non_validi = validate_libri(json_file_path, schema_file_path)
     
     print("\nLibri validi:")
     for libro in libri_validi:
@@ -44,9 +48,9 @@ def main():
     
     # Salva i record validi in un nuovo file JSON
     output_data = {"libri": libri_validi}
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open(output_file_path, "w", encoding="utf-8") as f:
         json.dump(output_data, f, indent=4, ensure_ascii=False)
-    print(f"\nRecord validi salvati in '{OUTPUT_FILE}'.")
+    print(f"\nRecord validi salvati in '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()

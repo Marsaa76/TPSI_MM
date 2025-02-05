@@ -1,4 +1,5 @@
 import json
+import os
 import jsonschema
 from jsonschema import validate, ValidationError
 
@@ -22,23 +23,28 @@ def validate_misurazioni(data, schema):
     return validi, non_validi
 
 def main():
-    dati = load_json("EX_3_Health.json")
-    schema = load_json("EX_3_Health_schema.json")
+        
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    json_file_path = os.path.join(script_dir, "EX_3_Health.json")
+    schema_file_path = os.path.join(script_dir, "EX_3_Health_schema.json")
+    output_file_path = os.path.join(script_dir, "EX_3_Health_output.json")
+
     
-    validi, non_validi = validate_misurazioni(dati, schema)
-    
+    validi, non_validi = validate_misurazioni(json_file_path, schema_file_path)
+        
     print("\nMisurazioni valide:")
     for m in validi:
-        print(f" - Tipo: {m['tipo']}, Valore: {m['valore']}")
-    
+            print(f" - Tipo: {m['tipo']}, Valore: {m['valore']}")
+        
     print("\nMisurazioni NON valide:")
     for m in non_validi:
-        print(f" - Tipo: {m.get('tipo', 'Mancante')}")
-    
+            print(f" - Tipo: {m.get('tipo', 'Mancante')}")
+        
     output_data = {"misurazioni": validi}
-    with open("EX_3_Health_output.json", "w", encoding="utf-8") as f:
-        json.dump(output_data, f, indent=4, ensure_ascii=False)
-    print(f"\nRecord validi salvati in '{EX_3_Health_output.json}'.")
+    with open("output_file_path", "w", encoding="utf-8") as f:
+            json.dump(output_data, f, indent=4, ensure_ascii=False)
+    print(f"\nRecord validi salvati in '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()

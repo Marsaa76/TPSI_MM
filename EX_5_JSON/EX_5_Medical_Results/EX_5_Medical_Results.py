@@ -1,4 +1,5 @@
 import json
+import os
 import jsonschema
 from jsonschema import validate, ValidationError
 
@@ -34,10 +35,14 @@ def validate_esami(data, schema):
     return validi, non_validi
 
 def main():
-    dati = load_json("EX_5_Medical_Results.json")
-    schema = load_json("EX_5_Medical_Results_schema.json")
+       
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    json_file_path = os.path.join(script_dir, "EX_5_Medical_Results.json")
+    schema_file_path = os.path.join(script_dir, "EX_5_Medical_Results_schema.json")
+    output_file_path = os.path.join(script_dir, "EX_5_Medical_Results_output.json")
     
-    validi, non_validi = validate_esami(dati, schema)
+    validi, non_validi = validate_esami(json_file_path, schema_file_path)
     
     print("\nEsami validi:")
     for esame in validi:
@@ -48,9 +53,9 @@ def main():
         print(f" - {esame.get('nome', 'Nome mancante')} {esame.get('cognome', 'Cognome mancante')}")
     
     output_data = {"esami": validi}
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open(output_file_path , "w", encoding="utf-8") as f:
         json.dump(output_data, f, indent=4, ensure_ascii=False)
-    print(f"\nRecord validi salvati in '{EX_5_Medical_Results_output.json}'.")
+    print(f"\nRecord validi salvati in '{output_file_path }'.")
 
 if __name__ == "__main__":
     main()
