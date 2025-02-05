@@ -1,24 +1,31 @@
 {
-    "description": "Catalog of books in a library",
-    "data": [
-        {
-            "title": "1984",
-            "authors": ["George Orwell"],
-            "genre": "Dystopian",
-            "ISBN": "9780451524935",
-            "publication_year": 1949,
-            "page_count": 328,
-            "language": "en"
-        },
-        {
-            "title": "The Divine Comedy",
-            "authors": ["Dante Alighieri"],
-            "genre": "Epic Poem",
-            "ISBN": "9780140448955",
-            "publication_year": 1320,
-            "page_count": 798,
-            "language": "it"
-        }
-       
+    "libri": [
+      {
+        "titolo": "I promessi sposi",
+        "autore": "Alessandro Manzoni",
+        "genere": "Romanzo storico",
+        "isbn": "978-88-12345-67-8",
+        "anno_pubblicazione": 1827,
+        "pagine": 720,
+        "lingua": "it"
+      },
+      {
+        "titolo": "Il nome della rosa",
+        "autore": "Umberto Eco",
+        "genere": "Giallo storico",
+        "isbn": "978-88-76543-21-9",
+        "anno_pubblicazione": 1980,
+        "pagine": 512,
+        "lingua": "it"
+      },
+      {
+        "titolo": "La coscienza di Zeno",
+        "autore": "Italo Svevo",
+        "genere": "Romanzo psicologico",
+        "anno_pubblicazione": 1923,
+        "pagine": 350,
+        "lingua": "it"
+      }
     ]
-}
+  }
+  
