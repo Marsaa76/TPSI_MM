@@ -2,9 +2,9 @@ import json
 import jsonschema
 from jsonschema import validate, ValidationError
 
-DATA_FILE = "tracciamento_pacchi.json"
-SCHEMA_FILE = "schema_tracciamento_pacchi.json"
-OUTPUT_FILE = "tracciamento_pacchi_valid.json"
+DATA_FILE = "EX_2_Tracking.json"
+SCHEMA_FILE = "EX_2_Tracking_schema.json"
+OUTPUT_FILE = "EX_2_Tracking_output.json"
 
 def load_json(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
