@@ -1,20 +1,24 @@
-
 {
-    "description": "Weather data from a station",
-    "data": [
-        {
-            "timestamp": "2025-01-16T06:00:00Z",
-            "temperature_celsius": 5.5,
-            "humidity_percent": 85,
-            "pressure_hPa": 1013,
-            "wind": {
-                "speed": {
-                    "value": 5.0,
-                    "unit": "m/s"
-                },
-                "direction": "N"
-            },
-            "rain_mm": 2.0
-        }
+    "rilevazioni": [
+      {
+        "data_ora": "2024-02-05T09:00:00",
+        "temperatura": 15.2,
+        "umidita": 70,
+        "pressione": 1013,
+        "vento": {
+          "velocita": 10,
+          "unita": "km/h",
+          "direzione": "N"
+        },
+        "pioggia": 0
+      },
+      {
+        "data_ora": "2024-02-05T12:00:00",
+        "temperatura": 18.5,
+        "umidita": 65,
+        "pressione": 1011,
+        "pioggia": 2
+      }
     ]
-}
+  }
+  

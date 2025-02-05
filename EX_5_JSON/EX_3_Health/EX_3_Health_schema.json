@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+      "misurazioni": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "data_ora": {"type": "string", "format": "date-time"},
+            "tipo": {"type": "string"},
+            "valore": {},
+            "note": {"type": "string"}
+          },
+          "required": ["data_ora", "tipo", "valore"]
+        }
+      }
+    },
+    "required": ["misurazioni"]
+  }
+  

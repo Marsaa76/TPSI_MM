@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+      "esami": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "nome": {"type": "string"},
+            "cognome": {"type": "string"},
+            "data_ora": {"type": "string", "format": "date-time"},
+            "analisi": {"type": "string"},
+            "risultato": {"type": "number"},
+            "unita": {"type": "string"},
+            "intervallo": {
+              "type": "object",
+              "properties": {
+                "min": {"type": "number"},
+                "max": {"type": "number"}
+              },
+              "required": ["min", "max"]
+            },
+            "esito": {"type": "string"}
+          },
+          "required": ["nome", "cognome", "data_ora", "analisi", "risultato", "unita", "intervallo", "esito"]
+        }
+      }
+    },
+    "required": ["esami"]
+  }
+  
