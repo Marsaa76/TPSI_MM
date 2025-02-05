@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+      "rilevazioni": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "data_ora": {"type": "string", "format": "date-time"},
+            "temperatura": {"type": "number"},
+            "umidita": {"type": "integer"},
+            "pressione": {"type": "integer"},
+            "vento": {
+              "type": "object",
+              "properties": {
+                "velocita": {"type": "number"},
+                "unita": {"type": "string"},
+                "direzione": {"type": "string"}
+              },
+              "required": ["velocita", "unita", "direzione"]
+            },
+            "pioggia": {"type": "number"}
+          },
+          "required": ["data_ora", "temperatura", "umidita", "pressione", "vento", "pioggia"]
+        }
+      }
+    },
+    "required": ["rilevazioni"]
+  }
+  

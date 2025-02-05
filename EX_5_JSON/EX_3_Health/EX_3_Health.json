@@ -1,17 +1,21 @@
 {
-"description": "Health monitoring data",
-"data": [
-    {
-        "timestamp": "2025-01-17T08:00:00Z",
-        "measurement_type": "Blood Pressure",
-        "value": "120/80",
-        "notes": "Normal reading."
-    },
-    {
-        "timestamp": "2025-01-17T10:00:00Z",
-        "measurement_type": "Heart Rate",
-        "value": 72,
-        "notes": "Resting heart rate."
-    }
-]
-}
+    "misurazioni": [
+      {
+        "data_ora": "2024-02-05T08:00:00",
+        "tipo": "pressione sanguigna",
+        "valore": "120/80",
+        "note": "Normale"
+      },
+      {
+        "data_ora": "2024-02-05T12:00:00",
+        "tipo": "battito cardiaco",
+        "valore": 75,
+        "note": "Regolare"
+      },
+      {
+        "data_ora": "2024-02-05T15:00:00",
+        "tipo": "livello di glucosio"
+      }
+    ]
+  }
+  
