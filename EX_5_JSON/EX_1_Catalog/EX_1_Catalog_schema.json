@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+      "libri": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "titolo": {"type": "string"},
+            "autore": {"type": "string"},
+            "genere": {"type": "string"},
+            "isbn": {"type": "string"},
+            "anno_pubblicazione": {"type": "integer"},
+            "pagine": {"type": "integer"},
+            "lingua": {"type": "string"}
+          },
+          "required": ["titolo", "autore", "genere", "isbn", "anno_pubblicazione", "pagine", "lingua"]
+        }
+      }
+    },
+    "required": ["libri"]
+  }
+  
