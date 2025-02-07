@@ -3,6 +3,10 @@ import os
 import jsonschema
 from jsonschema import validate, ValidationError
 
+def load_json(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
 def validate_pacchi(data, schema):
     validi = []
     non_validi = []
@@ -24,7 +28,10 @@ def main():
     schema_file_path = os.path.join(script_dir, "EX_2_Tracking_schema.json")
     output_file_path = os.path.join(script_dir, "EX_2_Tracking_output.json")
 
-    validi, non_validi = validate_pacchi(json_file_path, schema_file_path)
+    data = load_json(json_file_path)
+    schema = load_json(schema_file_path)
+
+    validi, non_validi = validate_pacchi(data, schema)
     
     print("\nTappe valide:")
     for tappa in validi:
