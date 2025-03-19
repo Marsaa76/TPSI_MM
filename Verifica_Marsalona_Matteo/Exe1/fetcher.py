@@ -16,14 +16,14 @@ class TransactionFetcher:
             print(f"HTTP request error: {e}")
             return []
 
-root = ET.fromstring(response.text)
-Transactions = []
-for Transaction in root.findall("transazione"):
-     Transactions.append(Transaction(
-        id = int (Transaction.find("id").text),
-        enter_site=Transaction.find("enter_site").text,
-        ingress_hour = datetime.fromisoformat(Transaction.find("ingress_hour").text),
-        exit = Transaction.find("exit").text,
-        exit_hour = datetime.fromisoformat(Transaction.find("exit_hour").text),
-        amount = float(Transaction.find)("amount").text
-        ))
+# root = ET.fromstring(response.text)
+# Transactions = []
+# for Transaction in root.findall("transazione"):
+#      Transactions.append(Transaction(
+#         id = int (Transaction.find("id").text),
+#         enter_site=Transaction.find("enter_site").text,
+#         ingress_hour = datetime.fromisoformat(Transaction.find("ingress_hour").text),
+#         exit = Transaction.find("exit").text,
+#         exit_hour = datetime.fromisoformat(Transaction.find("exit_hour").text),
+#         amount = float(Transaction.find)("amount").text
+#         ))
