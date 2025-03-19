@@ -4,14 +4,14 @@ from fetcher import TransactionFetcher
 from filter import TransactionFilter
 def main():
     fetcher = TransactionFetcher()
-    Transactions = fetcher.fetch_TRansactions()
-    if not Transactions:
+    transactions = fetcher.fetch_Transactions()
+    if not transactions:
         print("No transactions found or API request failed.")
         return
-filtered_Transaction = TransactionFilter.filter_by_state(Transaction) 
-print("\nTransaction in Livorno:")
-for Transaction in filtered_Transaction:
-        print(f"- {Transaction.id} ({Transaction.ingress_hour}) - {Transaction.exit_hour}")
-        if __name__ == "__main__":
-            main()
+    filtered_Transaction = TransactionFilter.filter_by_state(transactions) 
+    print("\nTransaction in Livorno:")
+    for transaction in filtered_Transaction:
+            print(f"- {transaction.id} ({transaction.ingress_hour}) - {transaction.exit_hour}")
+            if __name__ == "__main__":
+                main()
 
