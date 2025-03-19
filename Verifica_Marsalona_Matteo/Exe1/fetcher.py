@@ -8,8 +8,8 @@ class TransactionFetcher:
         try:
             response = requests.get(self.url)
             response.raise_for_status()
-            Transaction_json = response.json()
-            return [TransactionModel.from_json(Transaction) for Transaction in Transaction_json]
+            Transaction_xml = response.xml()
+            return [TransactionModel.from_xml(Transaction) for Transaction in Transaction_xml]
         except requests.exceptions.RequestException as e:
             print(f"HTTP request error: {e}")
             return []
