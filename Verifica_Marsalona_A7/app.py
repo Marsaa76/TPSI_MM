@@ -90,3 +90,20 @@ def get_cities_by_population():
     ).all()
     
     return jsonify([city.to_dict() for city in cities])
+@app.route('/cities/statistics/area', methods=['GET'])
+def get_cities_by_area():
+    min_area = request.args.get('minArea', type=float)
+    max_area = request.args.get('maxArea', type=float)
+    
+    if min_area is None or max_area is None:
+        return jsonify({'error': 'Both minArea and maxArea parameters are required'}), 400
+    
+    if min_area > max_area:
+        return jsonify({'error': 'minArea must be less than or equal to maxArea'}), 400
+    
+    cities = City.query.filter(
+        City.area >= min_area,
+        City.area <= max_area
+    ).all()
+    
+    return jsonify([city.to_dict() for city in cities])
