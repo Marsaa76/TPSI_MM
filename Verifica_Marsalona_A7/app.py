@@ -11,3 +11,9 @@ db.init_app(app)
 def get_all_cities():
     cities = City.query.all()
     return jsonify([city.to_dict() for city in cities])
+@app.route('/cities/<int:city_id>', methods=['GET'])
+def get_city(city_id):
+    city = City.query.get(city_id)
+    if city is None:
+        return jsonify({'error': 'City not found'}), 404
+    return jsonify(city.to_dict())
