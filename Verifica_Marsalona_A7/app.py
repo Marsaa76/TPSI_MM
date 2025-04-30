@@ -39,3 +39,28 @@ def add_city():
         return jsonify(new_city.to_dict()), 201
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
+
+@app.route('/cities/<int:city_id>', methods=['PUT'])
+def update_city(city_id):
+    city = City.query.get(city_id)
+    if city is None:
+        return jsonify({'error': 'City not found'}), 404
+    
+    data = request.get_json()
+    
+    try:
+        if 'name' in data:
+            city.name = data['name']
+        if 'country' in data:
+            city.country = data['country']
+        if 'population' in data:
+            city.population = int(data['population'])
+        if 'area' in data:
+            city.area = float(data['area'])
+        if 'last_population_update' in data:
+            city.last_population_update = datetime.strptime(data['last_population_update'], '%Y-%m-%d').date()
+        
+        db.session.commit()
+        return jsonify(city.to_dict())
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
