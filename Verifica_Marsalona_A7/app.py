@@ -17,3 +17,25 @@ def get_city(city_id):
     if city is None:
         return jsonify({'error': 'City not found'}), 404
     return jsonify(city.to_dict())
+@app.route('/cities', methods=['POST'])
+def add_city():
+    data = request.get_json()
+    
+    required_fields = ['name', 'country', 'population', 'area', 'last_population_update']
+    if not all(field in data for field in required_fields):
+        return jsonify({'error': 'Missing required fields'}), 400
+    
+    try:
+        last_update = datetime.strptime(data['last_population_update'], '%Y-%m-%d').date()
+        new_city = City(
+            name=data['name'],
+            country=data['country'],
+            population=int(data['population']),
+            area=float(data['area']),
+            last_population_update=last_update
+        )
+        db.session.add(new_city)
+        db.session.commit()
+        return jsonify(new_city.to_dict()), 201
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
