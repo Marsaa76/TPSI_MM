@@ -107,3 +107,5 @@ def get_cities_by_area():
     ).all()
     
     return jsonify([city.to_dict() for city in cities])
+if __name__ == '__main__':
+    app.run(debug=True)
