@@ -17,3 +17,13 @@ class City(db.Model):
         self.population = population
         self.area = area
         self.last_population_update = last_population_update
+
+        def to_dict(self):
+            return {
+                'id': self.id,
+                'name': self.name,
+                'country': self.country,
+                'population': self.population,
+                'area': self.area,
+                'last_population_update': self.last_population_update.strftime('%Y-%m-%d')
+            }
