@@ -64,3 +64,12 @@ def update_city(city_id):
         return jsonify(city.to_dict())
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
+@app.route('/cities/<int:city_id>', methods=['DELETE'])
+def delete_city(city_id):
+    city = City.query.get(city_id)
+    if city is None:
+        return jsonify({'error': 'City not found'}), 404
+    
+    db.session.delete(city)
+    db.session.commit()
+    return jsonify({'message': 'City deleted successfully'}), 200
